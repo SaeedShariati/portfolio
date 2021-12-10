@@ -1,0 +1,16 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet"
+          asp-href-include="/lib/bootstrap/**/*.min.css"
+          asp-href-exclude="**/*-reboot*,**/*-grid*" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>
