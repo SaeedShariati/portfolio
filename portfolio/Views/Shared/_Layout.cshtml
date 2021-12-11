@@ -2,15 +2,30 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet"
-          asp-href-include="/lib/bootstrap/**/*.min.css"
-          asp-href-exclude="**/*-reboot*,**/*-grid*" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" asp-href-include="/css/layout.css" />
+    <link rel="stylesheet" asp-href-include="/lib/aos/css/aos.css" />
+    <link rel="stylesheet" asp-href-include="/css/Responsive.css" />
+
+    <script src="~/lib/aos/js/aos.js"></script>
     <title>@ViewBag.Title</title>
 </head>
 <body>
-    <div>
-        @RenderBody()
+    <div class="container">
+        <div id="header">
+            <div class="center-v" style="color:#E0C097;font-family:monospace;font-size: 20px;">
+                Saeed Shariati
+            </div>
+        </div>
+        <div id="content" class="row col-12">
+            <div id="sidebar" class="col-4">
+                @RenderSection("sidebar",false)
+            </div>
+            <div id="main" class="col-8">
+                @RenderBody()
+            </div>
+        </div>
     </div>
+<script src="~/js/style.js"></script>
 </body>
 </html>

@@ -26,7 +26,7 @@ namespace portfolio
             app.UseStaticFiles();
             app.UseMvc(routes =>
             {
-                routes.MapRoute("default", "portfolio/{controller=Home}/{action=Index}");
+                routes.MapRoute("default", "{controller=Home}/{action=Index}");
             });
 
         }
