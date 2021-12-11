@@ -7,7 +7,6 @@ $cream: #E0C097;
 }
 body {
     background-color: $ddbrown;
-    margin: 1px;
     color:white;
 
     div#header {
@@ -16,7 +15,6 @@ body {
         background-color: $dbrown;
         height: 50px;
         width: 100%;
-        border: 5px solid rgba(0,0,0,0.4);
         text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
     }
 
