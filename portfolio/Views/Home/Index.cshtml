@@ -1,7 +1,12 @@
-﻿@{
+﻿@model IEnumerable<Post>
+@{
     Layout = "_Layout";
     ViewBag.Title = "Saeed Shariati";
 }
 @section sidebar{ 
     This is the sidebar.
+}
+@foreach(Post p in Model)
+{
+    @await Html.PartialAsync("Post",p)
 }

@@ -1,13 +1,28 @@
 ﻿@model Post
 
-<div class="post">
-    @if(Model.Text.Length>100)
+<article class="post">
+    <header>
+        <h3>
+        @Model.Header
+        </h3>
+    </header>
+    <div class="content">
+        @if(Model.ImageName != null)
+        {
+            <img src="~/img/@Model.ImageName" />
+        }
+    @if(Model.Text.Length>1000)
     {
-        <p>@Model.Text.Substring(0, 100)</p>
+        <p>@Model.Text.Substring(0, 1000) ...</p>
     }
     else
     {
         <p>@Model.Text</p>
     }
-
-</div>
+    </div>
+    <footer>
+        نویسنده: @Model.Author
+        <br />
+        تاریخ: @Model.CreationDate.ToString("yyyy/MM/dd")
+    </footer>
+</article>

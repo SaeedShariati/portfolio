@@ -2,25 +2,91 @@ $ddbrown: #2D2424;
 $dbrown: #5C3D2E;
 $brown: #B85C38;
 $cream: #E0C097;
+@mixin center-v {
+    display: table-cell;
+    vertical-align: middle;
+    height: 100%;
+}
+$black: #000000;
+$dark:#222831;
+$grey: #393e46;
+$orange:#d65a31;
+$white: #eeeeee;
+$green: #32e0c4;
+
+$nav-height: 50px;
 * {
     box-sizing: border-box;
+    padding:0px;
+    margin:0px;
+}
+a, a:visited, a:hover, a:active {
+    color: inherit;
+}
+body, html {
+    background-color: $dark;
+    min-height: 100vh;
+    height: 100%;
+    font-size: 1.1em;
+    color: white;
+    font-family: IRANSans;
+    text-align: justify;
+    line-height: 2;
+    font-size: 18px;
+    direction: rtl;
+    word-wrap: break-word;
 }
 body {
-    background-color: $ddbrown;
-    color:white;
-
-    div#header {
+    nav {
+        position: relative;
         text-align: center;
         display: table;
-        background-color: $dbrown;
-        height: 50px;
+        background-color: $grey;
+        height: $nav-height;
         width: 100%;
-        text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
+
+        div#logo {
+            line-height: $nav-height;
+            position: absolute;
+            left: 30px;
+            font-family: monospace;
+            font-size: 30px;
+            display: inline-block;
+            height: 100%;
+        }
+
+        ul {
+            margin: 0px;
+            display: block;
+            height: 100%;
+            right: 20px;
+            position: absolute;
+        }
+
+        ul li {
+            text-align: center;
+            height: 100%;
+            width: 80px;
+            line-height: $nav-height;
+            display: inline-block;
+        }
+
+        ul li a {
+            text-decoration: none;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        ul li:hover {
+            cursor: pointer;
+            background-color: #222831
+        }
     }
 
     div.container {
-        div#sidebar {
-            height: 100px;
+        aside {
+            min-height: 100px;
             display: block;
             float: left;
             border: 1px solid white;
@@ -28,18 +94,41 @@ body {
 
         div#main {
             float: right;
-            height: 100px;
+            min-height: 100px;
             display: block;
             clear: right;
             border: 1px solid white;
         }
     }
 }
-
-.center-v {
-    display: table-cell;
-    vertical-align: middle;
-    height: 100%;
+article.post {
+    margin: 5px;
+    min-height: 100px;
+    display: block;
+    background-color: $grey;
+    font-size:0.8em;
+    header {
+        color: #eeeeee;
+        background-color: #2aa08c;
+        height: 50px;
+        width: 100%;
+        display: table;
+        text-align: center;
+        h3{
+            @include center-v;
+        }
+    }
+    div.content{
+        padding:15px;
+    }
+    footer{
+        height:60px;
+        border-top: 1px solid $orange;
+        color:#818181;
+        font-size:0.8em;
+        padding:5px;
+    }
 }
+
 
 
