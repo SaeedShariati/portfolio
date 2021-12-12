@@ -9,6 +9,20 @@ body,html{
 .dark {
 	color: #082032;
 }
+div#resume{
+	display:inline-block;
+	position:absolute;
+	right:30px;
+	top:30px;
+	text-decoration:none;
+}
+div#resume a{
+	text-decoration:none;
+	vertical-align:middle;
+	display:flex;
+	align-items:center;
+
+}
 .bheader {
 	letter-spacing: 0.5em;
 	color: #082032;
@@ -38,7 +52,7 @@ div.clinks a{
 	display:block;
 }
 div.sections {
-	margin-top:100px;
+	margin-top:320px;
 	padding:20px;
 	text-align:center;
 	background-color: rgba(212,212,212,0.7);
@@ -60,6 +74,11 @@ div.sections > h3{
 	position:relative;
 	padding-top:100px;
 }
+.bigimg3{
+	background-image: url("/img/fractal3.jpg");
+	position:relative;
+	padding-top:100px;
+}
 div.badge{
 	margin:5px;
 	font-family:monospace;
@@ -75,9 +94,12 @@ div.badge:hover {
 }
 div.badges{
 	margin-top:50px;
+	display:flex;
+	flex-wrap:wrap;
+	align-content:center;
 }
 .chevron {
-	margin-top: 200px;
+	margin-top: 300px;
 	display: block;
 	animation: pulse 1s infinite ;
 	-webkit-animation: pulse 2s infinite ;
