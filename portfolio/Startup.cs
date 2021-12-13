@@ -23,7 +23,7 @@ namespace portfolio
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc(o=>o.EnableEndpointRouting = false);
-            services.AddTransient<IPostRepository, FakePostRepository>();
+            services.AddTransient<IPostRepository, EFPostRepository>();
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration["Data:CSharpLearnPosts:ConnectionString"]));
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -38,7 +38,6 @@ namespace portfolio
             {
                 routes.MapRoute("default", "{controller=Home}/{action=Index}");
             });
-
         }
     }
 }

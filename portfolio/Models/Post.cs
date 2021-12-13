@@ -18,9 +18,9 @@ namespace portfolio.Models
         [MaxLength(6000,ErrorMessage ="متن بیش از اندازه طولانی است")]
         public string Text { get; set; }
         [Required(ErrorMessage ="عنوان باید وارد شود")]
+        [MaxLength(30,ErrorMessage ="بیشتر از 30 کاراکتر نباید باشد")]
         public string Header { get; set; }
-        [Required]
-        public string Author { get; set; }
+        public Author Author { get; set; }
         public ICollection<Comment> Comments { get; set; }
         public string ImageName { get; set; }
 

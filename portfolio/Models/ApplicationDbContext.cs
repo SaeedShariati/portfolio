@@ -20,6 +20,7 @@ namespace portfolio.Models
             modelBuilder.Entity<Post>()
                 .Property(p => p.Created)
                 .HasDefaultValueSql("getdate()");
+            modelBuilder.Entity<Comment>().Property(c => c.Author).HasDefaultValue("ناشناس");
         }
     }
 }

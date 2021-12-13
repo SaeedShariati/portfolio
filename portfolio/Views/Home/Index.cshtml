@@ -6,7 +6,6 @@
 @section sidebar{ 
     This is the sidebar.
 }
-@foreach(Post p in Model)
-{
-    @await Html.PartialAsync("Post",p)
+@foreach(Post p in Model){
+    @await Html.PartialAsync("Post",p);
 }

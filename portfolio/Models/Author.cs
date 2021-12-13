@@ -10,6 +10,7 @@ namespace portfolio.Models
     {
         public long Id { get; set; }
         [Required]
+        [MaxLength(20,ErrorMessage = "بیشتر از 20 کاراکتر نباید باشد")]
         public string Username { get; set; }
         [MaxLength(300)]
         public string Description { get; set; }

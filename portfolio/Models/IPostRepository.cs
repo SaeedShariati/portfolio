@@ -9,6 +9,6 @@ namespace portfolio.Models
     {
         public IQueryable<Post> Posts { get; }
         void SavePost(Post post);
-        void DeletePost(int PostId);
+        Post DeletePost(int PostId);
     }
 }
