@@ -15,7 +15,7 @@ namespace portfolio.Models
         [MaxLength(280,ErrorMessage ="متن بیش از 280 کاراکتر است")]
         public string Text { get; set; }
         [Required]
-        public int Rating { get; set; } // 1 to 5
+        public int Rating { get; set; } // 1 to 10
         public Post Post { get; set; }
     }
 }

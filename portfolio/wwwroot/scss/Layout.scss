@@ -7,14 +7,28 @@ $cream: #E0C097;
     vertical-align: middle;
     height: 100%;
 }
+@mixin center-vertically{
+    top:50%;
+    transform:translate(0,-50%);
+}
+@mixin center-horizontally {
+    left: 50%;
+    transform: translateX(-50%,0);
+}
+@mixin center{
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
 $black: #000000;
 $dark:#222831;
 $grey: #393e46;
 $orange:#d65a31;
 $white: #eeeeee;
-$green: #32e0c4;
+$green: #2aa08c;
+$lightgreen: #32e0c4;
 
-$nav-height: 50px;
+$nav-height:50px;
 * {
     box-sizing: border-box;
     padding:0px;
@@ -23,25 +37,31 @@ $nav-height: 50px;
 ::-webkit-scrollbar-track {
     background-color: #222831;
 }
-
 ::-webkit-scrollbar {
     width: 5px;
     background-color: #F5F5F5;
 }
-
 ::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background-image: linear-gradient(#2aa08c, #32e0c4);
 }
-
 a, a:visited, a:hover, a:active {
     color: inherit;
+    cursor: pointer;
+    text-decoration:none;
+}
+@font-face{
+    font-family:WebYekan;
+    src:url("../fonts/Yekan.ttf")
+}
+header{
+    font-family: WebYekan;
+    font-size:18px;
 }
 div#overlay {
     position: fixed;
     width: 100%;
     height: 100vh;
-    display: none;
     top: 0;
     left: 0;
     right: 0;
@@ -49,90 +69,103 @@ div#overlay {
     background-color: rgba(0,0,0,0.5);
     z-index: 1;
 }
+ion-icon {
+    color: #ffffff;
+    --ionicon-stroke-width: 20px;
+    pointer-events: none;
+}
+article {
+    font-size: 12px;
+    font-family: tahoma;
+    line-height: 2em;
+    text-align: justify;
+}
 body, html {
     background-color: $dark;
     min-height: 100vh;
     height: 100%;
     font-size: 1.1em;
     color: white;
-    font-family: IRANSans;
-    text-align: justify;
-    line-height: 2;
-    font-size: 18px;
+    font-size: 12px;
+    font-family: tahoma;
     direction: rtl;
     word-wrap: break-word;
 }
-body {
-    nav {
+nav {
+    box-shadow: 0px 0px 8px 2px #000000;
+    background-color: $grey;
+    width: 100%;
+    display: block;
+    $padding: 5px 30px;
+    div#logo {
+        padding: $padding;
+        position: absolute;
+        left: 10px;
+        font-family: monospace;
+        font-size: 22px;
+        display: inline-block;
+    }
+
+    ul {
+        display: inline-block;
+        margin: 0px;
+        right: 0px;
         position: relative;
+    }
+
+    ul li {
         text-align: center;
-        display: table;
-        background-color: $grey;
-        height: $nav-height;
+        height: 100%;
+        display: inline-block;
+    }
+
+    ul li a {
+        padding:$padding;
+        text-decoration: none;
         width: 100%;
+        height: 100%;
+        display: block;
+        font-size: 20px;
 
-        div#logo {
-            line-height: $nav-height;
-            position: absolute;
-            left: 30px;
-            font-family: monospace;
-            font-size: 30px;
-            display: inline-block;
-            height: 100%;
-        }
-
-        ul {
-            margin: 0px;
-            display: block;
-            height: 100%;
-            right: 20px;
-            position: absolute;
-        }
-
-        ul li {
-            text-align: center;
-            height: 100%;
-            width: 80px;
-            line-height: $nav-height;
-            display: inline-block;
-        }
-
-        ul li a {
-            text-decoration: none;
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-
-        ul li:hover {
-            cursor: pointer;
-            background-color: #222831
+        .icon {
+            position: relative;
+            font-size: 18px;
+            vertical-align:middle;
         }
     }
 
-    div.container {
-        aside {
-            min-height: 100px;
-            display: block;
-            float: left;
-            border: 1px solid white;
-        }
+    ul li:hover {
+        cursor: pointer;
+        background-color: #222831
+    }
+}
+body {
+    > div.container {
+        div#content{
+            aside#sidebar {
+                min-height: 100px;
+                display: block;
+                float: left;
+            }
 
-        div#main {
-            float: right;
-            min-height: 100px;
-            display: block;
-            clear: right;
-            border: 1px solid white;
+            div#main {
+                float: right;
+                min-height: 100px;
+                display: block;
+                clear: right; 
+            }
         }
     }
 }
-article.post {
+aside#sidebar, div#main {
+    border: 1px solid white;
+}
+article.postSummary {
     margin: 5px;
     min-height: 100px;
     display: block;
     background-color: $grey;
-    font-size:0.8em;
+
     header {
         color: #eeeeee;
         background-color: #2aa08c;
@@ -140,21 +173,168 @@ article.post {
         width: 100%;
         display: table;
         text-align: center;
-        h3{
+
+        h3 {
+            font-family:WebYekan;
+            font-size:20px;
+            font-weight:500;
             @include center-v;
         }
     }
-    div.content{
-        padding:15px;
+
+    div.content {
+        padding: 15px;
     }
-    footer{
-        height:60px;
+
+    footer {
+        height: 60px;
         border-top: 1px solid $orange;
-        color:#818181;
-        font-size:0.8em;
-        padding:5px;
+        color: #818181;
+        font-size: 0.8em;
+        padding: 5px;
     }
 }
+article.postSummary:hover{
+    outline:1px solid #ffffff;
+}
+span.tag{
+    background-color:$green;
+    display:inline-block;
+    transition:background-color linear 1s;
+    padding: 5px 10px;
+    border-radius:10px;
+    height:35px;
+    margin:5px;
+    overflow:hidden;
+}
+span.tag:hover{
+    background-color:$lightgreen;
+    cursor:pointer;
+}
+article.post {
+    width: 100%;
+    border: 2px solid $green;
+    background-color: $grey;
+    > header {
+        background-color: $green;
+        width: 100%;
+        position:relative;
+        padding:8px 15px;
+        line-height:25px;
+        > span.title {
+            font-size:20px;
+            font-weight:500;
+        }
+        > div.authorStamp{
+            position:relative;
+            font-size:12px;
+            color:#cccccc;
+        }
+    }
 
+    > div.container {
+        padding: 10px;
+    }
 
+    > footer {
+        padding: 10px;
+        > div.tags{
+            span.icon >ion-icon{
+            color:$green;
+            }
+            span.text{
 
+            }
+        }
+    }
+}
+div#commentSection {
+    background-color: $grey;
+    border: 2px solid $green;
+    margin-top: 10px;
+
+    > header {
+        text-align: center;
+        background-color: $green;
+        line-height:40px;
+    }
+
+    > div.container {
+    }
+
+    div.comment {
+        margin:10px;
+        font-size: 12px;
+        font-family: WebYekan;
+        text-align: right;
+        border: 2px solid $lightgreen;
+        > header {
+            padding: 10px;
+            background-color: $green;
+            position:relative;
+            > span.author{
+
+            }
+            > span.rating{
+                position:absolute;
+                left:10px;
+                top:10px;
+            }
+        }
+        > div.container{
+            padding:10px;
+        }
+    }
+}
+div#signin {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 10;
+    overflow: hidden;
+    border-radius: 10px 10px 0px 0px;
+    padding: 0px;
+
+    > header {
+        height: 40px;
+        position: relative;
+        background-color: $orange;
+        text-align: center;
+        line-height: 40px;
+        border-spacing: 0px;
+        margin-bottom:-1px; /*to close the small gap between heaer and container, I don't know why it exists*/
+        > span.close-icon {
+            position: absolute;
+            height: 40px;
+            line-height: 40px;
+            left: 0px;
+            font-size: 32px;
+            width: 40px;
+            padding: 5px;
+        }
+
+        > span.close-icon:hover {
+            background-color: #ec8867;
+            cursor: pointer;
+        }
+    }
+
+    > .container {
+        background-color: $grey;
+        border: 3px solid $orange;
+        border-top: none;
+        width: 100%;
+        padding: 20px;
+
+        > form {
+            input {
+                width: 100%;
+                height: 30px;
+            }
+        }
+    }
+}
+.hidden{
+    display:none;
+}

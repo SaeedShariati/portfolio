@@ -1,0 +1,77 @@
+﻿@model Post
+<article class="post">
+    <header>
+        <div class="authorStamp">
+            <span dir="rtl" class="author">
+                پست شده توسط @Model.Author.Username
+            </span>
+            &nbsp;&nbsp;&nbsp;
+            @{
+                if ((DateTime.Now - Model.Created).TotalDays < 1)
+                {
+                    @:<span class="date">@(($"{((DateTime.Now - Model.Created).TotalHours):F0}").ToPersianDigits()) ساعت پیش</span>
+                }
+                else if ((DateTime.Now - Model.Created).TotalDays < 365)
+                {
+                    @:<span class="date">@(($"{((DateTime.Now - Model.Created).TotalDays):F0}").ToPersianDigits()) روز پیش</span>
+                }
+                else
+                {
+                    @:<span class="date">@(( (DateTime.Now - Model.Created) .TotalDays / 365).ToString().ToPersianDigits()) سال پیش</span>
+                }}
+        </div>
+        <span class="title">
+            @Model.Header
+        </span>
+
+    </header>
+    <div class="container">
+        <p>
+            @Model.Text
+        </p>
+    </div>
+    <footer>
+        <hr /> 
+        <div class="tags">
+            <span class="icon">
+                <ion-icon name="pricetags"></ion-icon>
+            </span>
+            <span class="text">کلمات کلیدی</span>
+            <br />
+            @if (Model.Tags != null)
+            {
+                foreach (string tag in Model.GetTags())
+                {<span class="tag">@tag</span>}
+            }
+        </div>
+
+    </footer>
+</article>
+<div id="commentSection">
+    <header>
+        نظرات
+    </header>
+    <div class="container">
+    @foreach (Comment c in Model.Comments)
+    {
+        <div class="comment">
+            <header>
+                <span class="author">@c.Author</span>
+                <span class="rating">
+                    @{ 
+                        for (int i = 0; i < (10 - c.Rating)/2; i++)
+                            {<ion-icon name="star-outline"></ion-icon>}
+                        if (c.Rating % 2 != 0)
+                        {<ion-icon name="star-half"></ion-icon>}
+                        for (int j=0; j < c.Rating/2; j++)
+                        {<ion-icon name="star"></ion-icon>}
+                    }
+                </span>
+            </header>
+            <div class="container">
+                @c.Text
+            </div>
+        </div>
+    }
+    </div>
+</div>

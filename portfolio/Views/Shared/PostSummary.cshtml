@@ -1,6 +1,5 @@
 ﻿@model Post
-
-<article class="post">
+<a asp-action="Post" asp-route-postid="@Model.Id"><article class="postSummary">
     <header>
         <h3>
         @Model.Header
@@ -25,4 +24,4 @@
         <br />
         تاریخ: @Model.Created.ToString("yyyy/MM/dd")
     </footer>
-</article>
+</article></a>

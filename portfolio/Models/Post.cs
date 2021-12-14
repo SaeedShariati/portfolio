@@ -23,6 +23,18 @@ namespace portfolio.Models
         public Author Author { get; set; }
         public ICollection<Comment> Comments { get; set; }
         public string ImageName { get; set; }
-
+        public void AddTag(string tag)
+        {
+            Tags += (tag + ",");
+        }
+        public void RemoveTag(string tag)
+        {
+            Tags = Tags.Replace(tag + ",", "");
+        }
+        public string[] GetTags()
+        {
+            string[] tags = Tags?.TrimEnd(',').Split(',');
+            return tags;
+        }
     }
 }

@@ -7,5 +7,5 @@
     This is the sidebar.
 }
 @foreach(Post p in Model){
-    @await Html.PartialAsync("Post",p);
+    @await Html.PartialAsync("PostSummary",p);
 }
