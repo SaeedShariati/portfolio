@@ -1,4 +1,6 @@
-﻿<div id="signin" class="hidden col-lg-7 col-8 col-m-9">
+﻿@model LoginViewModel
+
+<div id="signin" class="hidden col-lg-7 col-8 col-m-9">
     <header>
         <span onclick="toggleSignin()" class="icon close-icon">
             <ion-icon name="close-outline"></ion-icon>
@@ -6,22 +8,20 @@
         <h5>ورود / ثبت نام</h5>
     </header>
     <div class="container">
-        <form action="post">
+        <form asp-action="Login" asp-controller="Account">
+            <input type="hidden" value="~/" asp-for="ReturnUrl" />
+            <div class="text-danger" asp-validation-summary="All"></div>
             <div class="form-group">
-                <label>نام کاربری:</label>
-                <div>
-                    <span class="text-danger"></span>
-                </div>
-                <input class="form-control" />
-            </div>
-            <div class="form-group">
-                <label>گذرواژه:</label>
-                <div>
-                    <span class="text-danger"></span>
-                </div>
-                <input class="form-control" />
-            </div>
 
+                <label asp-for="Email">ایمیل:</label>
+                <input asp-for="Email" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Password">گذرواژه:</label>
+                <input class="form-control" asp-for="Password"/>
+            </div>
+            <button type="submit" class="btn">ورود</button>
+            <span style="float:left;"><a asp-route-returnUrl="/" asp-action="Register" asp-controller="Account">برای ثبت نام اینجا کلیک کنید</a></span>
         </form>
     </div>
 </div>

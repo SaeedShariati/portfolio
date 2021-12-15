@@ -29,7 +29,7 @@ namespace portfolio.Models
         }
         public void RemoveTag(string tag)
         {
-            Tags = Tags.Replace(tag + ",", "");
+            Tags = Tags?.Replace(tag + ",", "");
         }
         public string[] GetTags()
         {

@@ -1,0 +1,32 @@
+﻿@model RegisterViewModel
+@{
+    Layout = "_SimpleLayout";
+}
+<div id="Register" class="col-8">
+    <header>
+        ثبت نام
+    </header>
+    <div class="container">
+        <form asp-action="Register" asp-controller="Account">
+            <input type="hidden" asp-for="ReturnUrl" />
+            <div class="text-danger" asp-validation-summary="All"></div>
+            <div class="form-group">
+                <label asp-for="UserName">نام کاربری:</label>
+                <input asp-for="UserName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Email">ایمیل:</label>
+                <input asp-for="Email" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Password">گذرواژه:</label>
+                <input class="form-control" asp-for="Password" />
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmPassword">تکرار گذرواژه:</label>
+                <input asp-for="ConfirmPassword" class="form-control" />
+            </div>
+            <button type="submit" class="btn">ثبت نام</button>
+        </form>
+    </div>
+</div>

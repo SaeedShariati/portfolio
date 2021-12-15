@@ -6,6 +6,9 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+using portfolio.Infrastructure.Filters;
+
 namespace portfolio.Controllers
 {
     public class HomeController : Controller
@@ -16,7 +19,7 @@ namespace portfolio.Controllers
             Repository = repo;
         }
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(bool showSiginIn = false)
         {
             return View("Index",Repository.Posts.Take(5));
         }

@@ -71,7 +71,7 @@ div#overlay {
 }
 ion-icon {
     color: #ffffff;
-    --ionicon-stroke-width: 20px;
+    --ionicon-stroke-width: 40px;
     pointer-events: none;
 }
 article {
@@ -303,7 +303,7 @@ div#signin {
         text-align: center;
         line-height: 40px;
         border-spacing: 0px;
-        margin-bottom:-1px; /*to close the small gap between heaer and container, I don't know why it exists*/
+        margin-bottom: -1px; /*to close the small gap between heaer and container, I don't know why it exists*/
         > span.close-icon {
             position: absolute;
             height: 40px;
@@ -326,15 +326,67 @@ div#signin {
         border-top: none;
         width: 100%;
         padding: 20px;
-
-        > form {
-            input {
-                width: 100%;
-                height: 30px;
-            }
-        }
     }
+}
+
+.form-control {
+    width: 100%;
+    height: 30px;
+    margin-top: 10px;
+}
+.form-group{
+    margin-bottom:20px;
 }
 .hidden{
     display:none;
+}
+.btn {
+    font-family:WebYekan;
+    -webkit-border-radius: 28px;
+    -moz-border-radius: 28px;
+    border-radius: 28px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 18px;
+    background: $dark;
+    padding: 5px 20px 5px 20px;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background: $grey;
+    text-decoration: none;
+    cursor: pointer;
+}
+.text-danger{
+    color:#ff3131;
+    font-family:monospace;
+}
+.validation-summary-errors {
+    border: 1px solid #ff3131;
+    padding:10px 25px;
+    margin: 0px 0px 10px 0;
+}
+
+div#Register {
+    padding:0;
+    > header {
+        background-color: $green;
+        width: 100%;
+        position: relative;
+        padding: 8px 15px;
+        line-height: 25px;
+
+        > span.title {
+            font-size: 20px;
+            font-weight: 500;
+        }
+    }
+    > .container{
+        padding:20px
+    }
+    position: fixed;
+    @include center;
+    background-color: $grey;
+    border: 2px solid $green;
 }
