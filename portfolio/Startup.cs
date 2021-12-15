@@ -22,7 +22,7 @@ namespace portfolio
         }
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc(o=>o.EnableEndpointRouting = false);
+            services.AddControllersWithViews();
             services.AddTransient<IPostRepository, EFPostRepository>();
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration["Data:CSharpLearnPosts:ConnectionString"]));
         }
@@ -34,9 +34,10 @@ namespace portfolio
                 app.UseDeveloperExceptionPage();
             }
             app.UseStaticFiles();
-            app.UseMvc(routes =>
+            app.UseRouting();
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapRoute("default", "{controller=Home}/{action=Index}");
+                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
