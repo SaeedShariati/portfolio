@@ -38,11 +38,25 @@ namespace portfolio
                 options.Password.RequireNonAlphanumeric = false;
                 options.User.AllowedUserNameCharacters 
                 += "شسیبلتانمکگپظطزرذدئوضصثقفغعهخحجچ۰۱۲۳۴۵۶۷۸۹";
+                options.User.RequireUniqueEmail = true;
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
             }).AddEntityFrameworkStores<ApplicationIdentityDbContext>();
+
+
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie("Cookies",options => {
                     options.Cookie.SameSite = SameSiteMode.Strict;
                 });
+            services.ConfigureApplicationCookie(options =>
+            {
+                // Cookie settings
+                options.Cookie.HttpOnly = true;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+
+                options.LoginPath = "/Account/Login";
+                options.AccessDeniedPath = "/Account/AccessDenied";
+                options.SlidingExpiration = true;
+            });
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

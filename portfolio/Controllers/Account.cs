@@ -27,6 +27,7 @@ namespace portfolio.Controllers
             return View(register);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel u)
         {
             if (ModelState.IsValid)
@@ -54,6 +55,7 @@ namespace portfolio.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel u)
         {
             if (ModelState.IsValid)

@@ -19,7 +19,7 @@ namespace portfolio.Controllers
             Repository = repo;
         }
         [HttpGet]
-        public IActionResult Index(bool showSiginIn = false)
+        public IActionResult Index()
         {
             return View("Index",Repository.Posts.Take(5));
         }
