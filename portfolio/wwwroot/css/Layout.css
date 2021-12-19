@@ -113,6 +113,9 @@ nav ul li:hover {
   background-color: #222831;
 }
 
+body > div.container div#content {
+  padding: 10px;
+}
 body > div.container div#content aside#sidebar {
   min-height: 100px;
   display: block;
@@ -126,7 +129,7 @@ body > div.container div#content div#main {
 }
 
 aside#sidebar, div#main {
-  border: 1px solid white;
+  border: 1px solid #2aa08c;
 }
 
 article.postSummary {
@@ -183,7 +186,10 @@ span.tag:hover {
 }
 
 article.post {
-  width: 100%;
+  padding: 0px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
   border: 2px solid #2aa08c;
   background-color: #393e46;
 }

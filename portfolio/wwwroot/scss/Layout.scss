@@ -142,6 +142,7 @@ nav {
 body {
     > div.container {
         div#content{
+            padding:10px;
             aside#sidebar {
                 min-height: 100px;
                 display: block;
@@ -157,8 +158,8 @@ body {
         }
     }
 }
-aside#sidebar, div#main {
-    border: 1px solid white;
+aside#sidebar ,div#main{
+    border: 1px solid $green;
 }
 article.postSummary {
     margin: 5px;
@@ -212,7 +213,10 @@ span.tag:hover{
     cursor:pointer;
 }
 article.post {
-    width: 100%;
+    padding:0px;
+    position:relative;
+    left:50%;
+    transform: translate(-50%,0);
     border: 2px solid $green;
     background-color: $grey;
     > header {
