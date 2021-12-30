@@ -1,6 +1,23 @@
-﻿@{ 
+﻿@{
     Layout = "_SimpleLayout";
     ViewBag.Title = "Admin";
+}
+@section scripts{
+    <script src="~/lib/DataTables/datatables.min.js"></script>
+    <script>
+        $('#userTable').DataTable({
+            ajax: {
+                url: '/userapi/users',
+                dataSrc: ''
+            },
+            columns: [
+                { data: 'id' },
+                { data: 'userName' },
+                { data: 'email' }
+            ],
+            responsive:true
+        })
+    </script>
 }
 <div id="content" class="row">
     <article class="post col-9 col-m-11">
@@ -8,16 +25,19 @@
             Admin
         </header>
         <div class="container">
-            <ul>
-                @foreach (var claim in User.Claims)
-                {
-                    <li>@claim.Type = @claim.Value</li>
-                }
-            </ul>
-
+            <table id="userTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
         </div>
         <footer>
-
         </footer>
     </article>
 </div>

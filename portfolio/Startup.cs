@@ -25,9 +25,7 @@ namespace portfolio
         }
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews().ConfigureApiBehaviorOptions(options => {
-                options.ClientErrorMapping[StatusCodes.Status404NotFound].Link = "/404";
-            });
+            services.AddControllersWithViews();
             services.AddTransient<IPostRepository, EFPostRepository>();
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration["Data:CSharpLearnPosts:ConnectionString"]));
             services.AddDbContext<ApplicationIdentityDbContext>(options => options.UseSqlServer(
