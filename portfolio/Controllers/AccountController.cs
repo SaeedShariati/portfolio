@@ -12,14 +12,16 @@ using Microsoft.AspNetCore.Authorization;
 namespace portfolio.Controllers
 {
     [AllowAnonymous]
-    public class Account : Controller
+    public class AccountController : Controller
     {
         private readonly SignInManager<User> signInManager;
         private readonly UserManager<User> userManager;
-        public Account(SignInManager<User> SIM, UserManager<User> UM)
+        private readonly IAuthorizationService authService;
+        public AccountController(SignInManager<User> SIM, UserManager<User> UM,IAuthorizationService IAS)
         {
             signInManager = SIM;
             userManager = UM;
+            authService = IAS;
         }
         public IActionResult Register(string returnUrl = "/")
         {
@@ -61,6 +63,7 @@ namespace portfolio.Controllers
             if (ModelState.IsValid)
             {
                 User user = await userManager.FindByEmailAsync(u.Email);
+                //var result = await signInManager.PasswordSignInAsync(u.Email, u.Password, false, true);
                 if (user != null)
                 {
                     await signInManager.SignOutAsync();
@@ -81,6 +84,16 @@ namespace portfolio.Controllers
         }
         public IActionResult AccessDenied()
         {
+            return View();
+        }
+        public async Task<IActionResult> Profile()
+        {
+
+            var isAdmin = await authService.AuthorizeAsync(User, "Admin");
+            if (isAdmin.Succeeded)
+            {
+                return LocalRedirect("/Admin/Profile");
+            }
             return View();
         }
     }

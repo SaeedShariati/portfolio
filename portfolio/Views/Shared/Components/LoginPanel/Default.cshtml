@@ -1,0 +1,13 @@
+﻿
+@if (User.Identity.IsAuthenticated)
+{
+    <li id="signinMenu"> <!--
+    --><a title="پروفایل"  asp-controller="Account" asp-action="Profile">
+        <span class="icon"><ion-icon name="person-circle-outline"></ion-icon></span>
+        </a><!--
+    --></li>
+}
+else
+{
+    <li id="signinMenu"><a title="ورود/ثبت نام" onclick="toggleSignin()"><span class="icon"><ion-icon name="log-in-outline"></ion-icon></span></a></li>
+}

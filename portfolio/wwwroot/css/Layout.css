@@ -50,7 +50,11 @@ ion-icon {
   --ionicon-stroke-width: 40px;
   pointer-events: none;
 }
-
+div.clinks {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
 article {
   font-size: 12px;
   font-family: tahoma;

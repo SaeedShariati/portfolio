@@ -1,0 +1,23 @@
+﻿@{ 
+    Layout = "_SimpleLayout";
+    ViewBag.Title = "Admin";
+}
+<div id="content" class="row">
+    <article class="post col-9 col-m-11">
+        <header>
+            Admin
+        </header>
+        <div class="container">
+            <ul>
+                @foreach (var claim in User.Claims)
+                {
+                    <li>@claim.Type = @claim.Value</li>
+                }
+            </ul>
+
+        </div>
+        <footer>
+
+        </footer>
+    </article>
+</div>

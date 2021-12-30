@@ -14,14 +14,8 @@
     <div class="container">
         <nav>
             <ul>
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <li id="signinMenu"><a title="پروفایل"><span class="icon"><ion-icon name="person-circle-outline"></ion-icon></span></a></li>
-                }
-                else
-                {
-                    <li id="signinMenu"><a title="ورود/ثبت نام" onclick="toggleSignin()"><span class="icon"><ion-icon name="log-in-outline"></ion-icon></span></a></li>
-                }
+
+                @await Component.InvokeAsync(nameof(LoginPanel))
                 <li><a asp-action="Index" asp-controller="Home" title="خانه"><span class="icon"><ion-icon name="home"></ion-icon></span></a></li>
                 <li><a asp-action="About" asp-controller="Home" title="درباره من"><span class="icon"><ion-icon name="information-circle"></ion-icon></span></a></li>
             </ul>

@@ -25,7 +25,9 @@ namespace portfolio
         }
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().ConfigureApiBehaviorOptions(options => {
+                options.ClientErrorMapping[StatusCodes.Status404NotFound].Link = "/404";
+            });
             services.AddTransient<IPostRepository, EFPostRepository>();
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration["Data:CSharpLearnPosts:ConnectionString"]));
             services.AddDbContext<ApplicationIdentityDbContext>(options => options.UseSqlServer(
@@ -56,6 +58,10 @@ namespace portfolio
                 options.LoginPath = "/Account/Login";
                 options.AccessDeniedPath = "/Account/AccessDenied";
                 options.SlidingExpiration = true;
+            });
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Admin", policy => policy.RequireClaim("Admin"));
             });
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
